@@ -6,7 +6,7 @@ export function formatNumber(
   const nums = num.toString().split('.')
   const n = nums[0]
 
-  const res = n.replace(/\d(?=(?:\d{3})+(?:\.|$))/g, v => {
+  const res = n.replace(/(\d)(?=(\d\d)+\d$)/g, v => {
     return v + thousandSeparator
   })
 
