@@ -166,7 +166,7 @@ export class Display extends React.Component<DisplayProps, State> {
             {
               alignSelf: 'stretch',
               paddingRight: 5,
-              fontSize: 30,
+              fontSize: 20,
               height: height,
               lineHeight: height,
               // @ts-ignore
