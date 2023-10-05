@@ -209,15 +209,15 @@ export class Calculator extends React.Component<CalculatorProps, State> {
           ]}
         >
           {this.renderActionButton(btnSize, 'C', ActionEnum.CLEAR, true)}
-          {this.renderActionButton(btnSize, '/', ActionEnum.DIVIDE)}
-          {this.renderActionButton(btnSize, '*', ActionEnum.MULTIPLY)}
-          {this.renderActionButton(btnSize, '❮', ActionEnum.BACK)}
+          {this.renderActionButton(btnSize, '÷', ActionEnum.DIVIDE)}
+          {this.renderActionButton(btnSize, '×', ActionEnum.MULTIPLY)}
+          {this.renderActionButton(btnSize, '<', ActionEnum.BACK)}
         </View>
         <View style={Styles.row}>
           {this.renderNumberButton(btnSize, '7', true)}
           {this.renderNumberButton(btnSize, '8')}
           {this.renderNumberButton(btnSize, '9')}
-          {this.renderActionButton(btnSize, '-', ActionEnum.MINUS)}
+          {this.renderActionButton(btnSize, '−', ActionEnum.MINUS)}
         </View>
         <View style={Styles.row}>
           {this.renderNumberButton(btnSize, '4', true)}
@@ -412,15 +412,15 @@ export class Calculator extends React.Component<CalculatorProps, State> {
               break
 
             case ActionEnum.MINUS:
-              this.setSign('-')
+              this.setSign('−')
               break
 
             case ActionEnum.MULTIPLY:
-              this.setSign('*')
+              this.setSign('×')
               break
 
             case ActionEnum.DIVIDE:
-              this.setSign('/')
+              this.setSign('÷')
               break
 
             case ActionEnum.BACK:
@@ -512,7 +512,7 @@ export class Calculator extends React.Component<CalculatorProps, State> {
     }
 
     // tslint:disable-next-line:no-eval
-    const num = eval(this.stacks.map(x => x.value).join('') || '0')
+    const num = eval(this.stacks.map(x => x.value).join('').replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-') || '0')
     const value = Math.round(num * 10 ** roundTo) / 10 ** roundTo
     const text = this.format(value)
 
