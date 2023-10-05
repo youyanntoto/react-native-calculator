@@ -20,6 +20,26 @@ export interface CalculatorCommonProps {
   numericButtonColor?: string
 
   /**
+   * Clear button background color.
+   */
+  clearButtonBackgroundColor?: string
+
+  /**
+   * Clear text button color.
+   */
+  clearButtonColor?: string
+
+  /**
+   * Back button background color.
+   */
+  backButtonBackgroundColor?: string
+
+  /**
+   * Back text button color.
+   */
+  backButtonColor?: string
+
+  /**
    * Action button background color.
    */
   actionButtonBackgroundColor?: string

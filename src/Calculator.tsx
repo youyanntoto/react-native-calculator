@@ -209,9 +209,9 @@ export class Calculator extends React.Component<CalculatorProps, State> {
           ]}
         >
           {this.renderActionButton(btnSize, 'C', ActionEnum.CLEAR, true)}
+          {this.renderActionButton(btnSize, '<', ActionEnum.BACK)}
           {this.renderActionButton(btnSize, '÷', ActionEnum.DIVIDE)}
           {this.renderActionButton(btnSize, '×', ActionEnum.MULTIPLY)}
-          {this.renderActionButton(btnSize, '<', ActionEnum.BACK)}
         </View>
         <View style={Styles.row}>
           {this.renderNumberButton(btnSize, '7', true)}
@@ -377,9 +377,23 @@ export class Calculator extends React.Component<CalculatorProps, State> {
     const {
       actionButtonBackgroundColor,
       actionButtonColor,
+      clearButtonBackgroundColor,
+      clearButtonColor,
+      backButtonBackgroundColor,
+      backButtonColor,
       borderColor,
       fontSize
     } = this.props
+
+    let backgroundColor = actionButtonBackgroundColor
+    let color = actionButtonColor
+    if (action === ActionEnum.CLEAR) {
+      backgroundColor = clearButtonBackgroundColor
+      color = clearButtonColor
+    } else if (action === ActionEnum.BACK) {
+      backgroundColor = backButtonBackgroundColor
+      color = backButtonColor
+    }
 
     return (
       <Button
@@ -387,13 +401,13 @@ export class Calculator extends React.Component<CalculatorProps, State> {
           Styles.square,
           {
             borderColor,
-            backgroundColor: actionButtonBackgroundColor,
+            backgroundColor,
             borderLeftWidth: mostLeft ? 1 : 0,
             width: btnSize.width,
             height: btnSize.height
           }
         ]}
-        textStyle={{ color: actionButtonColor, fontSize }}
+        textStyle={{ color, fontSize }}
         text={value}
         onPress={() => {
           if (this.calculated) {
