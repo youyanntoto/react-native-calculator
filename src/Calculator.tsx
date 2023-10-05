@@ -235,12 +235,12 @@ export class Calculator extends React.Component<CalculatorProps, State> {
             {noDecimal ? (
               <View style={Styles.row}>
                 {this.renderNumberButton(btnSize, '0', true)}
-                {this.renderNumberButton(btnSize, '000', false, 2)}
+                {this.renderNumberButton(btnSize, '00', false, 2)}
               </View>
             ) : (
               <View style={Styles.row}>
                 {this.renderNumberButton(btnSize, '0', true)}
-                {this.renderNumberButton(btnSize, '000')}
+                {this.renderNumberButton(btnSize, '00')}
                 {!noDecimal &&
                   this.renderNumberButton(btnSize, decimalSeparator as string)}
               </View>
@@ -339,7 +339,7 @@ export class Calculator extends React.Component<CalculatorProps, State> {
               return
             }
             stack.trailing = decimalSeparator
-          } else if (value === '0' || value === '000') {
+          } else if (value === '0' || value === '00') {
             if (
               stack.value.indexOf(decimalSeparator as string) > -1 ||
               stack.trailing !== ''
